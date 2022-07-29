@@ -20,16 +20,16 @@ pub struct Processor;
 
 impl Processor {
     pub fn process(
-        _program_id: &Pubkey,
-        _account: &[AccountInfo],
+        program_id: &Pubkey,
+        accounts: &[AccountInfo],
         instruction_data: &[u8],
     ) -> ProgramResult {
         let instruction = StreamInstruction::unpack(instruction_data)?;
 
         match instruction {
-            StreamInstruction::CreateStream(_data) => todo!(),
-            StreamInstruction::WithdrawStream(_data) => todo!(),
-            StreamInstruction::CloseStream => todo!(),
+            StreamInstruction::CreateStream(data) => Self::process_create(program_id, accounts ,data),
+            StreamInstruction::WithdrawStream(data) => Self::process_withdraw(program_id, accounts ,data),
+            StreamInstruction::CloseStream => Self::process_close(program_id, accounts),
         }
     }
 
