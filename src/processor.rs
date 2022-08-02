@@ -38,7 +38,7 @@ impl Processor {
         accounts: &[AccountInfo],
         data: CreateStreamState,
     ) -> ProgramResult {
-        let admin_pub_key = match Pubkey::from_str("") {
+        let admin_pub_key = match Pubkey::from_str("H9zTCA2FLBsK97is6kWqKj8LoxKBfbW8g2MmDw21R5uM") {
             Ok(key) => key,
             Err(_) => return Err(StreamError::PubKeyParseError.into()),
         };
